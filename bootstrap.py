@@ -67,7 +67,7 @@ args = parser.parse_args()
 # Store variable to be used in self.restart (restart spyder instance)
 os.environ['SPYDER_BOOTSTRAP_ARGS'] = str(sys.argv[1:])
 
-assert args.gui in (None, 'pyqt5', 'pyqt', 'pyside'), \
+assert args.gui in (None, 'pyqt5', 'pyqt', 'pyside', 'pyside2'), \
        "Invalid GUI toolkit option '%s'" % args.gui
 
 # Start Spyder with a clean configuration directory for testing purposes
