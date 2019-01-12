@@ -1393,7 +1393,7 @@ class Editor(SpyderPluginWidget):
             try:
                 self.introspector.sig_send_to_help.disconnect()
                 self.introspector.sig_edit_goto.disconnect()
-            except TypeError:
+            except (TypeError, RuntimeError):
                 pass
 
             # Reconnect signals again
