@@ -26,7 +26,8 @@ from spyder.plugins import TabFilter
 # =============================================================================
 # Tests
 # =============================================================================
-@pytest.mark.skipif(PYQT_VERSION > '5.10', reason='Segfaults in PyQt 5.10+')
+@pytest.mark.skipif(PYQT_VERSION and PYQT_VERSION > '5.10',
+                    reason='Segfaults in PyQt 5.10+')
 def test_tabfilter_typeerror_simple():
     """Test for #5813 ; event filter handles None indicies when moving tabs."""
     MockEvent = MagicMock()
