@@ -29,6 +29,7 @@ from flaky import flaky
 from jupyter_client.kernelspec import KernelSpec
 from pygments.token import Name
 import pytest
+import qtpy
 from qtpy import PYQT5
 from qtpy.QtCore import Qt
 from qtpy.QtWebEngineWidgets import WEBENGINE
@@ -686,6 +687,7 @@ def test_mpl_backend_change(ipyconsole, qtbot):
 @flaky(max_runs=10)
 @pytest.mark.skipif(os.environ.get('CI', None) is not None or PYQT5,
                     reason="It fails frequently in PyQt5 and our CIs")
+@pytest.mark.skipif(qtpy.PYSIDE2, reason="fails on pyside2")
 def test_ctrl_c_dbg(ipyconsole, qtbot):
     """
     Test that Ctrl+C works while debugging
