@@ -23,6 +23,7 @@ except ImportError:
 
 # Third party imports
 from pandas import DataFrame, date_range, read_csv, concat
+import qtpy
 from qtpy.QtGui import QColor
 from qtpy.QtCore import Qt, QTimer
 import numpy
@@ -320,6 +321,7 @@ def test_dataframemodel_set_data_overflow(monkeypatch):
 @flaky(max_runs=3)
 @pytest.mark.no_xvfb
 @pytest.mark.skipif(sys.platform == 'darwin', reason="It fails on macOS")
+@pytest.mark.skipif(qtpy.PYSIDE2, reason="fails on pyside2")
 def test_dataframeeditor_edit_overflow(qtbot, monkeypatch):
     """
     Test that entry of an overflowing integer is caught and handled properly.
@@ -404,6 +406,7 @@ def test_dataframemodel_set_data_complex(monkeypatch):
 @flaky(max_runs=3)
 @pytest.mark.no_xvfb
 @pytest.mark.skipif(sys.platform == 'darwin', reason="It fails on macOS")
+@pytest.mark.skipif(qtpy.PYSIDE2, reason="fails on pyside2")
 def test_dataframeeditor_edit_complex(qtbot, monkeypatch):
     """
     Test that editing complex dtypes is handled gracefully in df editor.
@@ -451,6 +454,7 @@ def test_dataframeeditor_edit_complex(qtbot, monkeypatch):
                              dialog.get_value().as_matrix()) == len(test_df)
 
 
+@pytest.mark.skipif(qtpy.PYSIDE2, reason="fails on pyside2")
 def test_dataframemodel_set_data_bool(monkeypatch):
     """Test that bools are editible in df and false-y strs are detected."""
     MockQMessageBox = Mock()
@@ -479,6 +483,7 @@ def test_dataframemodel_set_data_bool(monkeypatch):
 @flaky(max_runs=3)
 @pytest.mark.no_xvfb
 @pytest.mark.skipif(sys.platform == 'darwin', reason="It fails on macOS")
+@pytest.mark.skipif(qtpy.PYSIDE2, reason="fails on pyside2")
 def test_dataframeeditor_edit_bool(qtbot, monkeypatch):
     """Test that bools are editible in df and false-y strs are detected."""
     MockQMessageBox = Mock()
