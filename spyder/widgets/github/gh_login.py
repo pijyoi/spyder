@@ -88,13 +88,13 @@ class DlgGitHubLogin(QDialog):
         # Basic auth tab
         basic_auth = QWidget()
         basic_layout = QVBoxLayout()
-        basic_layout.addSpacerItem(QSpacerItem(QSpacerItem(0, 8)))
+        basic_layout.addSpacerItem(QSpacerItem(0, 8))
         basic_layout.addWidget(basic_lbl_msg)
         basic_layout.addSpacerItem(
-            QSpacerItem(QSpacerItem(0, 50, vPolicy=QSizePolicy.Expanding)))
+            QSpacerItem(0, 50, vPolicy=QSizePolicy.Expanding))
         basic_layout.addLayout(basic_form_layout)
         basic_layout.addSpacerItem(
-            QSpacerItem(QSpacerItem(0, 50, vPolicy=QSizePolicy.Expanding)))
+            QSpacerItem(0, 50, vPolicy=QSizePolicy.Expanding))
         basic_auth.setLayout(basic_layout)
         self.tabs.addTab(basic_auth, _("Password Only"))
 
@@ -134,13 +134,13 @@ class DlgGitHubLogin(QDialog):
         # Token auth tab
         token_auth = QWidget()
         token_layout = QVBoxLayout()
-        token_layout.addSpacerItem(QSpacerItem(QSpacerItem(0, 8)))
+        token_layout.addSpacerItem(QSpacerItem(0, 8))
         token_layout.addWidget(token_lbl_msg)
         token_layout.addSpacerItem(
-            QSpacerItem(QSpacerItem(0, 50, vPolicy=QSizePolicy.Expanding)))
+            QSpacerItem(0, 50, vPolicy=QSizePolicy.Expanding))
         token_layout.addLayout(token_form_layout)
         token_layout.addSpacerItem(
-            QSpacerItem(QSpacerItem(0, 50, vPolicy=QSizePolicy.Expanding)))
+            QSpacerItem(0, 50, vPolicy=QSizePolicy.Expanding))
         token_auth.setLayout(token_layout)
         self.tabs.addTab(token_auth, _("Access Token"))
 
