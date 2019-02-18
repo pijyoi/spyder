@@ -22,6 +22,7 @@ except ImportError:
 import numpy as np
 from numpy.testing import assert_array_equal
 import pytest
+import qtpy
 from qtpy.QtCore import Qt
 from flaky import flaky
 
@@ -198,6 +199,7 @@ def test_arrayeditor_with_empty_3d_array(qtbot):
     assert_array_equal(arr, launch_arrayeditor(arr, "3D array"))
 
 
+@pytest.mark.skipif(qtpy.PYSIDE2, reason="aborts on pyside2")
 def test_arrayeditor_edit_1d_array(qtbot):
     exp_arr = np.array([1, 0, 2, 3, 4])
     arr = np.arange(0, 5)
@@ -217,6 +219,7 @@ def test_arrayeditor_edit_1d_array(qtbot):
     assert np.sum(exp_arr == dlg.get_value()) == 5
 
 
+@pytest.mark.skipif(qtpy.PYSIDE2, reason="aborts on pyside2")
 @pytest.mark.skipif(sys.platform == 'darwin', reason="It fails on macOS")
 def test_arrayeditor_edit_2d_array(qtbot):
     arr = np.ones((3, 3))
@@ -293,6 +296,7 @@ def test_arraymodel_set_data_overflow(monkeypatch):
 
 
 @flaky(max_runs=3)
+@pytest.mark.skipif(qtpy.PYSIDE2, reason="aborts on pyside2")
 @pytest.mark.skipif(sys.platform == 'darwin', reason="It fails on macOS")
 def test_arrayeditor_edit_overflow(qtbot, monkeypatch):
     """
