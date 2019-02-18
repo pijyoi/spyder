@@ -1426,7 +1426,8 @@ def test_maximize_minimize_plugins(main_window, qtbot):
 @pytest.mark.slow
 @flaky(max_runs=3)
 @pytest.mark.skipif((os.name == 'nt' or
-                     os.environ.get('CI', None) is not None and PYQT_VERSION >= '5.9'),
+                     os.environ.get('CI', None) is not None and
+                     PYQT_VERSION and PYQT_VERSION >= '5.9'),
                     reason="It times out on Windows and segfaults in our CIs with PyQt >= 5.9")
 def test_issue_4066(main_window, qtbot):
     """
