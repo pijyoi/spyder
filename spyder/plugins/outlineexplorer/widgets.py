@@ -480,7 +480,12 @@ class OutlineExplorerTreeWidget(OneColumnTree):
                 self.ordered_editor_ids if
                 self.editor_items.get(e_id) is not None]
 
-        if current_ordered_items != new_ordered_items:
+        try:
+            reordered = current_ordered_items != new_ordered_items
+        except NotImplementedError:
+            # pyside2 emits this
+            reordered = True
+        if reordered:
             selected_items = self.selectedItems()
             self.save_expanded_state()
             for index in range(self.topLevelItemCount()):
