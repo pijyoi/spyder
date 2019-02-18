@@ -36,7 +36,8 @@ def test_HtmlSH_basic():
            (26, 14, 'comment'),  # |<!--comment-->|
            (40, 5, 'normal'),    # | bar.|
            (45, 4, 'builtin')]   # |</p>|
-    compare_formats(doc.firstBlock().layout().additionalFormats(), res, sh)
+    firstblk = doc.firstBlock()
+    compare_formats(firstblk.layout().additionalFormats(), res, sh)
 
 def test_HtmlSH_unclosed_commend():
     txt = '-->'
@@ -44,7 +45,8 @@ def test_HtmlSH_unclosed_commend():
     sh = HtmlSH(doc, color_scheme='Spyder')
     sh.rehighlightBlock(doc.firstBlock())
     res = [(0, 3, 'normal')]
-    compare_formats(doc.firstBlock().layout().additionalFormats(), res, sh)
+    firstblk = doc.firstBlock()
+    compare_formats(firstblk.layout().additionalFormats(), res, sh)
 
 
 def test_Markdown_basic():
@@ -67,7 +69,8 @@ def test_Markdown_basic():
            (61, 1, 'normal'),  # ||
            ]
 
-    compare_formats(doc.firstBlock().layout().additionalFormats(), res, sh)
+    firstblk = doc.firstBlock()
+    compare_formats(firstblk.layout().additionalFormats(), res, sh)
 
 
 @pytest.mark.parametrize('line', ['# --- First variant',
