@@ -1205,7 +1205,7 @@ class MarkdownSH(BaseSH):
         self.formats['strikethrough'] = font
 
         font = QTextCharFormat(self.formats['string'])
-        font.setUnderlineStyle(True)
+        font.setUnderlineStyle(QTextCharFormat.SingleUnderline)
         self.formats['link'] = font
 
         self.formats['code'] = self.formats['string']
