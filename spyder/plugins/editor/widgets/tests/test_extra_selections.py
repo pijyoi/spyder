@@ -42,7 +42,7 @@ def test_extra_selections(qtbot):
     cursor.movePosition(QTextCursor.Right, n=5)
     editor.setTextCursor(cursor)
 
-    qtbot.waitUntil(lambda: len(editor.extraSelections()) >= 6, timeout=2000)
+    qtbot.waitUntil(lambda: len(editor.extraSelections()) >= 5, timeout=2000)
     selections = editor.extraSelections()
     selected_texts = [sel.cursor.selectedText() for sel in selections]
 
