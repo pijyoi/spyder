@@ -210,7 +210,7 @@ class SpyderPlugin(BasePlugin):
 # =============================================================================
 # SpyderPluginWidget
 # =============================================================================
-class BasePluginWidget(QWidget, BasePluginWidgetMixin):
+class BasePluginWidget(BasePluginWidgetMixin, QWidget):
     """
     Basic functionality for Spyder plugin widgets.
 
